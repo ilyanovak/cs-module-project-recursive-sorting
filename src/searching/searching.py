@@ -2,21 +2,22 @@
 def binary_search(arr, target, start, end):
     # if array is empty
     if arr == []:
-        return - 1
+        return -1
     # calculate average as halfway in between start and end
     average = end // 2
     # if target is found in the array
     if arr[average] == target:
         return average
     # if the target is not found in the array
-    if start >= end:
-        return -1  # not found
+    # if start > end:
+    #     return -1  # not found
     # if the target is to the left of the average
-    if arr[average] > target:
-        return binary_search(arr, target, start, average)
-    # otherwise if the target is the right of the average
-    else:
-        return binary_search(arr, target, average, end)
+    while start <= end:
+        if arr[average] > target:
+            return binary_search(arr, target, start, average-1)
+        # otherwise if the target is the right of the average
+        else:
+            return binary_search(arr, target, average+1, end)
 
 
 # STRETCH: implement an order-agnostic binary search
